@@ -38,3 +38,12 @@ Route::get('/tasks/user', 'TasksController@userTasks');
 
 // Route to show single task for a user
 Route::get('/tasks/{task_id}', 'TasksController@show');
+
+/*
+|-------------------------------------------------
+| Comment Routes
+|-------------------------------------------------
+*/
+
+// Route to post the comment added to a task
+Route::post('comment', 'CommentsController@postComment');

@@ -84,8 +84,9 @@ class TasksController extends Controller
     {
         $task = Task::where('task_id', $task_id)->firstOrFail();
         $category = $task->category;
+        $comments = $task->comments;
 
-        return view('tasks.show', compact('task', 'category'));
+        return view('tasks.show', compact('task', 'category', 'comments'));
     }
 
     /**

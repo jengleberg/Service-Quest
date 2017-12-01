@@ -20,10 +20,20 @@ class AppMailer {
 
     public function sendTaskInformation($user, Task $task)
     {
-        $this->to = $user->email;
-        $this->subject = "[Task ID: $task->task_id] $task->title";
-        $this->view = 'emails.newTask';
-        $this->data = compact('user', 'task');
+        $this->to       = $user->email;
+        $this->subject  = "[Task ID: $task->task_id] $task->title";
+        $this->view     = 'emails.newTask';
+        $this->data     = compact('user', 'task');
+
+        return $this->deliver();
+    }
+
+    public function sendtaskComments($taskOwner, $user, task $task, $comment)
+    {
+        $this->to       = $taskOwner->email;
+        $this->subject  = "RE: $task->title (task ID: $task->task_id)";
+        $this->view     = 'emails.commentTask';
+        $this->data     = compact('taskOwner', 'user', 'task', 'comment');
 
         return $this->deliver();
     }
