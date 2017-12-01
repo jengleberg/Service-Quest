@@ -17,4 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Home page route
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*
+|-------------------------------------------------
+| Task Routes
+|-------------------------------------------------
+*/
+
+// Route to open the form to show the new task page
+Route::get('/tasks/create', 'TasksController@create');
+
+// Route to store the newly created task in the DB
+Route::post('/tasks', 'TasksController@store');
