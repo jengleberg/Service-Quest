@@ -80,9 +80,12 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($task_id)
     {
-        //
+        $task = Task::where('task_id', $task_id)->firstOrFail();
+        $category = $task->category;
+
+        return view('tasks.show', compact('task', 'category'));
     }
 
     /**

@@ -33,5 +33,8 @@ Route::get('/tasks/create', 'TasksController@create');
 // Route to store the newly created task in the DB
 Route::post('/tasks/create', 'TasksController@store');
 
-// Route to show the individual tasks for users
+// Route to show the tasks for an individual user
 Route::get('/tasks/user', 'TasksController@userTasks');
+
+// Route to show single task for a user
+Route::get('/tasks/{task_id}', 'TasksController@show');
