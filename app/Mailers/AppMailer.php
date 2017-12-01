@@ -38,6 +38,16 @@ class AppMailer {
         return $this->deliver();
     }
 
+    public function sendTaskStatusNotification($taskOwner, Task $task)
+    {
+        $this->to       = $taskOwner->email;
+        $this->subject  = "RE: $task->title (Task ID: $task->task_id)";
+        $this->view     = 'emails.statusTask';
+        $this->data     = compact('taskOwner', 'task');
+
+        return $this->deliver();
+    }
+
     public function deliver()
     {
         $this->mailer->send($this->view, $this->data, function($message) {

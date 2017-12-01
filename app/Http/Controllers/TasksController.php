@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TasksController extends Controller
 {
+    // Pulls in auth middleware to only allow authorized users to access the app.
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +23,10 @@ class TasksController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::paginate(10);
+        $categories = Category::all();
+
+        return view('tasks.index', compact('tasks', 'categories'));
     }
 
     /**
@@ -89,6 +98,21 @@ class TasksController extends Controller
         return view('tasks.show', compact('task', 'category', 'comments'));
     }
 
+    public function close($task_id, AppMailer $mailer)
+    {
+        $task = Task::where('task_id', $task_id)->firstOrFail();
+
+        $task->status = 'Closed';
+
+        $task->save();
+
+        $taskOwner = $task->user;
+
+        $mailer->sendTaskStatusNotification($taskOwner, $task);
+
+        return redirect()->back()->with("status", "The task has been closed.");
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -122,4 +146,6 @@ class TasksController extends Controller
     {
         //
     }
+
+
 }

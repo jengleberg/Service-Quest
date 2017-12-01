@@ -47,3 +47,15 @@ Route::get('/tasks/{task_id}', 'TasksController@show');
 
 // Route to post the comment added to a task
 Route::post('comment', 'CommentsController@postComment');
+
+/*
+|------------------------------------------------------------------------
+| Admin Routes - used to define which routes an admin user has access to.
+|------------------------------------------------------------------------
+*/
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+
+    Route::get('tasks', 'TasksController@index');
+    Route::post('close_task/{task_id}', 'TasksController@close');
+});
