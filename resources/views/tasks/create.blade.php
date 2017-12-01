@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     @include('includes.flash')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/task/create') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/tasks/create') }}">
                         {{   csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">

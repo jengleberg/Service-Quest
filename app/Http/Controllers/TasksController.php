@@ -66,6 +66,14 @@ class TasksController extends Controller
 
     }
 
+    public function userTasks()
+    {
+        $tasks = Task::where('user_id', Auth::user()->id)->paginate(10);
+        $categories = Category::all();
+
+        return view('tasks.usershow', compact('tasks', 'categories'));
+    }
+
     /**
      * Display the specified resource.
      *
