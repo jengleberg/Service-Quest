@@ -8,7 +8,7 @@ class Task extends Model
 {
 	// Indicates that these columns can be mass assigned.
     protected $fillable = [
-        'user_id', 'category_id', 'task_id', 'title', 'priority', 'message', 'status'
+        'user_id', 'category_id', 'task_id', 'title', 'priority', 'message', 'status', 'location_id',
     ];
 
     // Defines the relationship that a task belongs to a category
@@ -25,5 +25,10 @@ class Task extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 }

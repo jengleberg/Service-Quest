@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Task;
+use App\Location;
 use App\Mailers\AppMailer;
 use Illuminate\Support\Facades\Auth;
+
 
 class TasksController extends Controller
 {
@@ -25,8 +27,9 @@ class TasksController extends Controller
     {
         $tasks = Task::paginate(10);
         $categories = Category::all();
+        $locations = Location::all();
 
-        return view('tasks.index', compact('tasks', 'categories'));
+        return view('tasks.index', compact('tasks', 'categories', 'locations'));
     }
 
     /**
@@ -38,7 +41,7 @@ class TasksController extends Controller
     {
         $categories = Category::all();
 
-        return view('tasks.create', compact('categories'));
+        return view('tasks.create', compact('categories', 'locations'));
     }
 
     /**
@@ -53,18 +56,20 @@ class TasksController extends Controller
         $this->validate($request, [
             'title'     => 'required',
             'category'  => 'required',
+            'location'  => 'required',
             'priority'  => 'required',
             'message'   => 'required'
         ]);
 
         $task = new Task([
-            'title'     => $request->input('title'),
-            'user_id'   => Auth::user()->id,
-            'task_id'   => strtoupper(str_random(10)),
-            'category_id'  => $request->input('category'),
-            'priority'  => $request->input('priority'),
-            'message'   => $request->input('message'),
-            'status'    => "Open",
+            'title'         => $request->input('title'),
+            'user_id'       => Auth::user()->id,
+            'task_id'       => strtoupper(str_random(10)),
+            'category_id'   => $request->input('category'),
+            'location_id'   => $request->input('location'),
+            'priority'      => $request->input('priority'),
+            'message'       => $request->input('message'),
+            'status'        => "Open",
         ]);
 
         $task->save();
@@ -80,7 +85,7 @@ class TasksController extends Controller
         $tasks = Task::where('user_id', Auth::user()->id)->paginate(10);
         $categories = Category::all();
 
-        return view('tasks.usershow', compact('tasks', 'categories'));
+        return view('tasks.usershow', compact('tasks', 'categories', 'locations'));
     }
 
     /**
@@ -93,9 +98,10 @@ class TasksController extends Controller
     {
         $task = Task::where('task_id', $task_id)->firstOrFail();
         $category = $task->category;
+        $location = $task->location;
         $comments = $task->comments;
 
-        return view('tasks.show', compact('task', 'category', 'comments'));
+        return view('tasks.show', compact('task', 'category', 'location', 'comments'));
     }
 
     public function close($task_id, AppMailer $mailer)
