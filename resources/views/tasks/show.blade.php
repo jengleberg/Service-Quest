@@ -15,7 +15,8 @@
 
                     <div class="task-info">
                         <p>{{ $task->message }}</p>
-                        <p>Categry: {{ $category->name }}</p>
+                        <p>Category: {{ $category->name }}</p>
+                        <p>Location: {{ $location->name }}</p>
                         <p>
                         @if ($task->status === 'Open')
                             Status: <span class="label label-success">{{ $task->status }}</span>
@@ -23,7 +24,8 @@
                             Status: <span class="label label-danger">{{ $task->status }}</span>
                         @endif
                         </p>
-                        <p>Created on: {{ $task->created_at->diffForHumans() }}</p>
+                        <p>Opened on: {{ $task->created_at->toDayDateTimeString() }}</p>
+                        <p>Last Update: {{ $task->updated_at->diffForHumans() }}</p>
                     </div>
 
                     <hr>
@@ -33,7 +35,7 @@
                             <div class="panel panel-@if($task->user->id === $comment->user_id) {{"default"}}@else{{"success"}}@endif">
                                 <div class="panel panel-heading">
                                     {{ $comment->user->name }}
-                                    <span class="pull-right">{{ $comment->created_at->format('Y-m-d') }}</span>
+                                    <span class="pull-right">{{ $comment->created_at->toDateTimeString() }}</span>
                                 </div>
 
                                 <div class="panel panel-body">
@@ -60,7 +62,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Submit Note</button>
                             </div>
                         </form>
                 </div>

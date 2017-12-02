@@ -14,11 +14,11 @@
 
                     @if (Auth::user()->is_admin)
                         <p>
-                            See all <a href="{{ url('admin/tasks') }}">tasks</a>
+                            See all <a href="{{ url('admin/tasks') }}">open tasks</a> or <a href="{{ url('tasks/create') }}">open a new task</a>
                         </p>
                     @else
                         <p>
-                            See all your <a href="{{ url('tasks/user') }}">tasks</a> or <a href="{{ url('tasks/create') }}">open new task</a>
+                            See all your assigned <a href="{{ url('tasks/user') }}">tasks</a> or <a href="{{ url('tasks/create') }}">open a new task</a>
                         </p>
                     @endif
                 </div>

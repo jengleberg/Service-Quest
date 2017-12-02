@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // Home page route
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 
 /*
@@ -38,6 +38,9 @@ Route::get('/tasks/user', 'TasksController@userTasks');
 
 // Route to show single task for a user
 Route::get('/tasks/{task_id}', 'TasksController@show');
+
+// Route to close a task for individual user
+Route::post('close_task/{task_id}', 'TasksController@close');
 
 /*
 |-------------------------------------------------

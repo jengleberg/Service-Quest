@@ -40,6 +40,7 @@ class TasksController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $locations = Location::all();
 
         return view('tasks.create', compact('categories', 'locations'));
     }
@@ -84,6 +85,7 @@ class TasksController extends Controller
     {
         $tasks = Task::where('user_id', Auth::user()->id)->paginate(10);
         $categories = Category::all();
+        $locations = Location::all();
 
         return view('tasks.usershow', compact('tasks', 'categories', 'locations'));
     }

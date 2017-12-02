@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
+            $table->integer('location_id')->unsigned();
             $table->string('task_id')->unique();
             $table->string('title');
             $table->string('priority');
