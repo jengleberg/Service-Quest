@@ -15,7 +15,7 @@
                         {{   csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-4 control-label">Title</label>
+                            <label for="title" class="col-md-4 control-label">Task Name</label>
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">Category</label>
+                            <label for="category" class="col-md-4 control-label">Task Category</label>
 
                             <div class="col-md-6">
                                 <select id="category" type="category" class="form-control" name="category">
@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
-                            <label for="location" class="col-md-4 control-label">Location</label>
+                            <label for="location" class="col-md-4 control-label">Task Location</label>
 
                             <div class="col-md-6">
                                 <select id="location" type="location" class="form-control" name="location">
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-4 control-label">Message</label>
+                            <label for="message" class="col-md-4 control-label">Task Notes</label>
 
                             <div class="col-md-6">
                                 <textarea rows="10" id="message" class="form-control" name="message"></textarea>

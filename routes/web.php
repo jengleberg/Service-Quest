@@ -53,12 +53,21 @@ Route::post('comment', 'CommentsController@postComment');
 
 /*
 |------------------------------------------------------------------------
-| Admin Routes - used to define which routes an admin user has access to.
+| Admin Routes pulling from Middleware used to define which routes an admin user has access to.
 |------------------------------------------------------------------------
 */
 
+// Route group under admin users. uses next 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     Route::get('tasks', 'TasksController@index');
     Route::post('close_task/{task_id}', 'TasksController@close');
 });
+
+/*
+|-------------------------------------------------
+| API Routes
+|-------------------------------------------------
+*/
+
+Route::get('api','GuzzleController@getRemoteData');

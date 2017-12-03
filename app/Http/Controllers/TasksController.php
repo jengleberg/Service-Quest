@@ -23,13 +23,15 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // Index controller function used in web.php admin routes.  
     public function index()
     {
+        // variables of database used in blade index view.  
         $tasks = Task::paginate(10);
         $categories = Category::all();
         $locations = Location::all();
-
-        return view('tasks.index', compact('tasks', 'categories', 'locations'));
+        // when index function
+        return view('tasks.cardsindex', compact('tasks', 'categories', 'locations'));
     }
 
     /**
@@ -77,7 +79,7 @@ class TasksController extends Controller
 
         $mailer->sendTaskInformation(Auth::user(), $task);
 
-        return redirect()->back()->with("status", "A task with ID: #$task->task_id has been opened.");
+        return redirect()->back()->with("status", "Task $task->title has been opened.");
 
     }
 

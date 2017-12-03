@@ -3,6 +3,8 @@
 @section('title', 'All Tasks')
 
 @section('content')
+
+
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -57,8 +59,9 @@
                                     </td>
                                     <td>{{ $task->updated_at->diffForHumans() }}</td>
                                     <td>{{ $task->created_at->toDayDateTimeString() }}</td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
                                     <td>
-                                        <a href="{{ url('tasks/' . $task->task_id) }}" class="btn btn-primary">Add Note</a>
+                                        <a href="{{ url('tasks/' . $task->task_id) }}" class="btn btn-primary">Add Task Note</a>
                                     </td>
                                     <td>
                                         <form action="{{ url('admin/close_task/' . $task->task_id) }}" method="POST">
@@ -66,6 +69,7 @@
                                             <button type="submit" class="btn btn-danger">Close Task</button>
                                         </form>
                                     </td>
+                                    </div>
                                 </tr>
                             @endforeach
                             </tbody>
