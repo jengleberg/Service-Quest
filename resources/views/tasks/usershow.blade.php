@@ -1,20 +1,22 @@
 @extends('layouts.app')
 
-@section('title', 'My tasks')
+@section('title', 'All Tasks')
 
 @section('content')
+
 <!-- Styles -->
     <link href="{{ asset('css/table.css') }}" rel="stylesheet">
+
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-task"> My tasks</i>
+                <div class="panel-heading" style="background-color: #6e7bb2;">
+                    <i class="fa fa-task">Your Task List</i>
                 </div>
 
                 <div class="panel-body">
                     @if ($tasks->isEmpty())
-                        <p>You have not created any tasks.</p>
+                        <p>There are currently no tasks.</p>
                     @else
                         <table class="table">
                             <thead>
@@ -23,6 +25,7 @@
                                     <th>Category</th>
                                     <th>Location</th>
                                     <th>Status</th>
+                                    <th>Priority</th>
                                     <th>Last Updated</th>
                                     <th>Opened On</th>
                                     <th style="text-align:center" colspan="2">Actions</th>
@@ -32,8 +35,9 @@
                             @foreach ($tasks as $task)
                                 <tr>
                                     <td>
-                                        <a href="{{ url('tasks/'. $task->task_id) }}">
-                                            {{ $task->title }}
+                                        {{ $task->title }}
+                                        {{-- <a href="{{ url('tasks/'. $task->task_id) }}"> --}}
+                                            
                                         </a>
                                     </td>
                                     <td>
@@ -49,6 +53,8 @@
                                             {{ $location->name }}
                                         @endif
                                     @endforeach
+
+                                    </td>
                                     </td>
                                     <td>
                                     @if ($task->status === 'Open')

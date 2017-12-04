@@ -6,8 +6,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Open a new Task</div>
-
+                <div class="panel-heading" style="background-color: #6e7bb2;">
+                    <h1>Open a new Task</h1>
+                </div>
+                    
                 <div class="panel-body">
                     @include('includes.flash')
 
@@ -86,7 +88,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('message') ? ' has-error' : '' }}">
-                            <label for="message" class="col-md-4 control-label">Task Notes</label>
+                            <label for="message" class="col-md-4 control-label">Task Details</label>
 
                             <div class="col-md-6">
                                 <textarea rows="10" id="message" class="form-control" name="message"></textarea>
@@ -102,7 +104,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-ticket"></i> Open Task
+                                    <i class="fa fa-btn fa-ticket"></i> Create Task
                                 </button>
                             </div>
                         </div>

@@ -31,7 +31,7 @@ class TasksController extends Controller
         $categories = Category::all();
         $locations = Location::all();
         // when index function
-        return view('tasks.cardsindex', compact('tasks', 'categories', 'locations'));
+        return view('tasks.index', compact('tasks', 'categories', 'locations'));
     }
 
     /**

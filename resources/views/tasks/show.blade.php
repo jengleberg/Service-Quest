@@ -5,23 +5,28 @@
 @section('content')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    #{{ $task->task_id }} - {{ $task->title }}
+            <div class="panel panel-default" >
+                <div class="panel-heading" style="background-color: #6e7bb2;">
+                   <h1>{{ $task->title }}</h1> 
                 </div>
 
                 <div class="panel-body">
                     @include('includes.flash')
 
                     <div class="task-info">
-                        <p>{{ $task->message }}</p>
-                        <p>Category: {{ $category->name }}</p>
-                        <p>Location: {{ $location->name }}</p>
+                        <span><h4>{{ $task->message }}</h4>
+                        <p></p></span>
+                        
+                        
+                        <h4></h4>
+                        <p>Category:     {{ $category->name }}</p>
+                        
+                        <p>Location:    {{ $location->name }}</p>
                         <p>
                         @if ($task->status === 'Open')
-                            Status: <span class="label label-success">{{ $task->status }}</span>
+                            Status:  <span class="label label-success">{{ $task->status }}</span>
                         @else
-                            Status: <span class="label label-danger">{{ $task->status }}</span>
+                            Status:  <span class="label label-danger">{{ $task->status }}</span>
                         @endif
                         </p>
                         <p>Opened on: {{ $task->created_at->toDayDateTimeString() }}</p>
@@ -34,7 +39,7 @@
                         @foreach ($comments as $comment)
                             <div class="panel panel-@if($task->user->id === $comment->user_id) {{"default"}}@else{{"success"}}@endif">
                                 <div class="panel panel-heading">
-                                    {{ $comment->user->name }}
+                                   Note added by:  {{ $comment->user->name }}
                                     <span class="pull-right">{{ $comment->created_at->toDateTimeString() }}</span>
                                 </div>
 
