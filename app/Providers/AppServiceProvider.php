@@ -13,7 +13,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('dashboard', function ($view) {
+
+            $archives = \App\Task::archives();
+            
+
+            $view->with(compact('archives'));
+
+            
+
+        });
     }
 
     /**

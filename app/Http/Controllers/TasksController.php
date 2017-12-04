@@ -8,7 +8,7 @@ use App\Task;
 use App\Location;
 use App\Mailers\AppMailer;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+
 
 
 class TasksController extends Controller
@@ -24,23 +24,24 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     // Index controller function used in web.php admin routes.  
     public function index()
     {
         // variables of database used in blade index view.  
         $tasks = Task::where('status', 'Open')->paginate(10);
 
-        
         $categories = Category::all();
+
         $locations = Location::all();
 
-        
-
-
-
-        // when index function
+        // when index function return this view
         return view('tasks.index', compact('tasks', 'categories', 'locations'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,6 +55,8 @@ class TasksController extends Controller
 
         return view('tasks.create', compact('categories', 'locations'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -69,7 +72,8 @@ class TasksController extends Controller
             'category'  => 'required',
             'location'  => 'required',
             'priority'  => 'required',
-            'message'   => 'required'
+            'message'   => 'required',
+            'location'  => 'required'
         ]);
 
         $task = new Task([
@@ -131,32 +135,21 @@ class TasksController extends Controller
         return redirect()->back()->with("status", "The task has been closed.");
     }
 
-    // public function dashboard()
-    // {
-    //     $tasks = Task::latest()
+    public function resolved()
+    {
+        $tasks = Task::where('status', 'Closed')
+        ->filter(request()->only(['month', 'year']));
 
-    //     ->filter(request()->only(['month', 'year']))
+        
 
-    //     ->get();
+        $categories = Category::all();
+        $locations = Location::all();
 
-    //     $archives = task::selectRaw('year(created_at) year, monthname(created_at) month, count(*) total')
 
-    //     ->groupBy('year', 'month')
-    //     ->orderedByRaw('min(created_at) desc')
-    //     ->get()
-    //     ->toArray();
+        return view('tasks.resolved', compact('task', 'category', 'location'));
+    }
 
-    //     return view ('dashboard', compact('tasks', 'archives'));
-    // }
 
-    // public static function archives()
-    // {
-    //     return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-    //     ->groupBy('year', 'month')
-    //     ->orderByRaw('min(created_at) desc')
-    //     ->get()
-    //     ->toArray();
-    // }
 
     /**
      * Show the form for editing the specified resource.

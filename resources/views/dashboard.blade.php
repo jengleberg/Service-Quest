@@ -37,16 +37,11 @@
             @endif
             <a href="{{ url('tasks/create') }}" class="list-group-item list-group-item-action list-group-item-success">Open a new Task</a>
             <br>
-            {{-- <h3>Closed Tasks</h3>
+            <h3>Closed Tasks</h3>
             @foreach ($archives as $stats)
-            <a href="/?month={{  $stats['month'] }}$year={{ $stats['year'] }}" class="list-group-item">{{ $stats['month']. ' ' .$stats['year'] }}</a>
-            @endforeach --}}
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
+            <a href="{{ url('tasks/resolved') }}" class="list-group-item">{{ $stats['month']. ' ' .$stats['year']. ' '. 'Total:'.' '.$stats['total'] }}</a>
+            @endforeach
+            
           </div>
         </div><!--/span-->
       </div><!--/row-->

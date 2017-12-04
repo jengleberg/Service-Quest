@@ -42,6 +42,9 @@ Route::get('/tasks/{task_id}', 'TasksController@show');
 // Route to close a task for individual user
 Route::post('close_task/{task_id}', 'TasksController@close');
 
+// Route to show closed tasks via archives
+Route::get('/tasks/resolved', 'TasksController@resolved');
+
 /*
 |-------------------------------------------------
 | Comment Routes
@@ -61,6 +64,7 @@ Route::post('comment', 'CommentsController@postComment');
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
 
     Route::get('tasks', 'TasksController@index');
+    
     Route::post('close_task/{task_id}', 'TasksController@close');
 });
 
