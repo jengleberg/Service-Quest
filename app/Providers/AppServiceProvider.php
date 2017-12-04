@@ -20,11 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with(compact('archives'));
 
-            
-
         });
 
-        Schema::defaultStringLength(191);
+
     }
 
     /**
