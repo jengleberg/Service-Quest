@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -12,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -71,10 +73,13 @@
             </div>
         </nav>
 
-        @yield('content')
+        
     </div>
 
-    <!-- Scripts -->
+
+        @yield ('content')
+
+
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

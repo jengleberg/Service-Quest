@@ -2,12 +2,48 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Mailers;
+
+
 use App\User;
-use App\Mailers\Welcome;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Mail;
+
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+
+class Welcome extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public $user;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->view('emails.welcome');
+        \Mail::to($user)->send(new Welcome($user));
+    }
+}
+
 
 class RegisterController extends Controller
 {
@@ -69,5 +105,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+
     }
 }
