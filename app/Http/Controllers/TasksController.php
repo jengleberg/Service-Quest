@@ -93,7 +93,7 @@ class TasksController extends Controller
 
     public function userTasks()
     {
-        $tasks = Task::where('user_id', Auth::user()->id)->paginate(10);
+        $tasks = Task::where('user_id', Auth::user()->id)->where('status', 'Open')->paginate(10);
         $categories = Category::all();
         $locations = Location::all();
 
