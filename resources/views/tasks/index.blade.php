@@ -4,12 +4,14 @@
 
 @section('content')
 
+<!-- Styles -->
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-task"> Tasks</i>
+                    <i class="fa fa-task">Your Task List</i>
                 </div>
 
                 <div class="panel-body">

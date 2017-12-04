@@ -4,89 +4,70 @@
 
 @section('content')
 
-<!-- Styles -->
-    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
 
-<h1>
-    <span class="blue">Open Tasks</span>
-</h1>
 <div class="row">
+    {{-- <div class="card-group"> --}}
+        <div class="col-md-10 col-md-offset-1">
+            {{-- <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-task">Your Task List</i>
+                </div> --}}
+
+               {{--  <div class="panel-body"> --}}
                     @if ($tasks->isEmpty())
                         <p>There are currently no tasks.</p>
                     @else
-<table class="container">
-    <thead>
-        <tr>
-            <th>Task Name</th>
-            <th>Category</th>
-            <th>Location</th>
-            <th>Status</th>
-            <th>Last Updated</th>
-            <th>Opened On</th>
-            <th style="text-align:center" colspan="2">Actions</th>
-        </tr>
-    </thead>
+                    @foreach ($tasks as $task)
+                                
+                                            {{-- {{ $task->title }} --}}
+                                      
+  <div class="col-sm-6">
 
-            <tbody>
-            @foreach ($tasks as $task)
-                <tr>
-                    <td>
-                        {{ $task->title }}   
-                    </td>
+    <div class="col-md-10 col-md-offset-1">
 
-                    <td>
-                    @foreach ($categories as $category)
-                        @if ($category->id === $task->category_id)
-                            {{ $category->name }}
-                        @endif
-                    @endforeach
-                    </td>
-
-                    <td>
-                    @foreach ($locations as $location)
-                        @if ($location->id === $task->location_id)
-                            {{ $location->name }}
-                        @endif
-                    @endforeach
-                    </td>
-                    <td>
-                    @if ($task->status === 'Open')
-                        <span class="label label-success">{{ $task->status }}</span>
-                    @else
-                        <span class="label label-danger">{{ $task->status }}</span>
-                    @endif
-                    </td>
-                    <td>{{ $task->updated_at->diffForHumans() }}</td>
-                    <td>{{ $task->created_at->toDayDateTimeString() }}</td>
-                    
-                    <td>
-                        <a href="{{ url('tasks/' . $task->task_id) }}" class="btn btn-primary">Add Task Note</a>
-                    </td>
-                    <td>
-                        <form action="{{ url('admin/close_task/' . $task->task_id) }}" method="POST">
-                            {!! csrf_field() !!}
-                            <button type="submit" class="btn btn-danger">Close Task</button>
-                        </form>
-                    </td>
-                    
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-           
-        {{ $tasks->links() }}
-
-    @endif
-
-
-                      
-
-                            
-                    <form>
-                        <a href="{{ url('tasks/create') }}" class="btn btn-success btn-lg btn-block">Create New Task</a>
-                    </form>
-
-              
+    <div class="card card-cascade" style="/*background-color: #333;*/   margin-bottom: 1em">
+        {{-- <div class="card-header">
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('tasks/' . $task->task_id) }}">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div> --}}
+      <!--Card image-->
+    <div class="view gradient-card-header blue-gradient">
+        <h2 class="h2-responsive">{{ $task->title }}</h2>
+        {{-- <p>Subheading</p> --}}
     </div>
+    <!--/Card image-->
+    <!--Card content-->
+    <div class="card-body text-center">
+        {{-- <h3 class="card-title">{{ $task->title }}</h3> --}}
+        @foreach ($categories as $category)
+            @if ($category->id === $task->category_id)
+
+               <h2>{{ $category->name }}</h2>
+            @endif
+        @endforeach
+         </div>
+    <!--/.Card content-->
+        {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+      </div>
+    </div>
+
+  </div>
+
+  @endforeach
+  {{ $tasks->links() }}
+
+                    @endif
+  </div>
+</div>
+
 
 @endsection

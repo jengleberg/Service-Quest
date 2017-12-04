@@ -3,6 +3,8 @@
 @section('title', 'My tasks')
 
 @section('content')
+<!-- Styles -->
+    <link href="{{ asset('css/table.css') }}" rel="stylesheet">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
@@ -73,11 +75,11 @@
 
                         {{ $tasks->links() }}
                     @endif
+                    <form>
+                        <a href="{{ url('tasks/create') }}" class="btn btn-success btn-lg btn-block">Create New Task</a>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <form>
-        <a href="{{ url('tasks/create') }}" class="btn btn-primary">Create New Task</a>
-    </form>
 @endsection
