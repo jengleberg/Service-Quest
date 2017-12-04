@@ -8,6 +8,7 @@ use App\Task;
 use App\Location;
 use App\Mailers\AppMailer;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 class TasksController extends Controller
@@ -27,9 +28,16 @@ class TasksController extends Controller
     public function index()
     {
         // variables of database used in blade index view.  
-        $tasks = Task::paginate(10);
+        $tasks = Task::where('status', 'Open')->paginate(10);
+
+        
         $categories = Category::all();
         $locations = Location::all();
+
+        
+
+
+
         // when index function
         return view('tasks.index', compact('tasks', 'categories', 'locations'));
     }
@@ -123,14 +131,32 @@ class TasksController extends Controller
         return redirect()->back()->with("status", "The task has been closed.");
     }
 
-    public static function archives()
-    {
-        return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
-    }
+    // public function dashboard()
+    // {
+    //     $tasks = Task::latest()
+
+    //     ->filter(request()->only(['month', 'year']))
+
+    //     ->get();
+
+    //     $archives = task::selectRaw('year(created_at) year, monthname(created_at) month, count(*) total')
+
+    //     ->groupBy('year', 'month')
+    //     ->orderedByRaw('min(created_at) desc')
+    //     ->get()
+    //     ->toArray();
+
+    //     return view ('dashboard', compact('tasks', 'archives'));
+    // }
+
+    // public static function archives()
+    // {
+    //     return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')
+    //     ->groupBy('year', 'month')
+    //     ->orderByRaw('min(created_at) desc')
+    //     ->get()
+    //     ->toArray();
+    // }
 
     /**
      * Show the form for editing the specified resource.

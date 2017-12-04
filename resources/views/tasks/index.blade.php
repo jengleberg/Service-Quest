@@ -92,5 +92,8 @@
             </div>
         </div>
     </div>
-
+{{-- <h3>Closed Tasks</h3>
+            @foreach ($archives as $stats)
+            <a href="/?month={{  $stats['month'] }}$year={{ $stats['year'] }}" class="list-group-item">{{ $stats['month']. ' ' .$stats['year'] }}</a>
+            @endforeach --}}
 @endsection
