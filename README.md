@@ -51,6 +51,9 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 5. Add Task Note.  Notes are stored on this screen and indicate the name of the user who entered the note and the date. 
 ![](https://i.imgur.com/ztRlygt.png)
 
+6. Closed tasks can be access via the sidebar on the dashboard.  They are filtered by month and year.
+![](https://i.imgur.com/0dQXkqj.png)
+
 
 ## Workflow and Code Features
 
