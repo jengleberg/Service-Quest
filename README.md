@@ -1,6 +1,10 @@
 # Service Quest Task Management System
 
-Service Quest is a Task Management app built with Laravel version 5.5.  
+Service Quest is a Task Management app built with 
+
+* [Laravel version 5.5](https://laravel.com/)
+
+
 
 ## Features
 
