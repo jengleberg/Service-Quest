@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ class Task extends Model
         'user_id', 'category_id', 'task_id', 'title', 'priority', 'message', 'status', 'location_id',
     ];
 
-    // Defines the relationship that a task belongs to a category
+    // Defines the relationships that tasks have with other models.
     public function category()
     {
     	return $this->belongsTo(Category::class);
@@ -34,12 +35,13 @@ class Task extends Model
         return $this->belongsTo(Location::class);
     }
 
+    // Calling scopeFilter and giving it a list of filters.  
     public function scopeFilter($query,$filters)
 
     {
-
+        //If there is a month is the where clause
         if(isset($filters['month'])){
-
+            // then where 
         $query->whereMonth('created_at',Carbon::parse($filters['month'])->month);
     }
 

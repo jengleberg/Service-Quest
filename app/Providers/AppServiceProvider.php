@@ -16,14 +16,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('dashboard', function ($view) {
+        view()->composer('dashboard',  function ($view) {
 
-            $archives = \App\Task::archives();
+            
             
 
-            $view->with(compact('archives'));
+            $view->with('archives', \App\Task::archives());
 
         });
+        
 
 
     }

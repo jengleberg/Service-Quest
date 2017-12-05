@@ -137,9 +137,11 @@ class TasksController extends Controller
 
     public function resolved()
     {
-        $tasks = Task::where('status', 'Closed')
-        ->filter(request()->only(['month', 'year']));
+         $tasks = Task::
+         where('status', 'Closed')
+         ->filter(request()->only(['month', 'year']));
 
+        
         
 
         $categories = Category::all();

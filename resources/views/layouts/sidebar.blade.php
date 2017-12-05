@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard')
+@section('title', 'sidebar')
 
 @section('content')
 
@@ -15,20 +15,18 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-12 col-md-9">
+        {{-- <div class="col-12 col-md-9">
           
           <div class="jumbotron" style="background-color: #6e7bb2; color: #FFFFFF">
             <h2>Welcome to Service Quest, {{ Auth::user()->name }}.</h2>
             <p>This is your dashboard.  The Service Quest Dashboard is the launching point for creating new tasks, updating existing tasks and closing tasks.</p>
           </div>
-          <div class="row">
+          <div class="row"> --}}
             {{-- <div class="col-6 col-lg-4">
               <h2>Heading</h2> --}}
               
-          </div><!--/row-->
-        </div><!--/span-->
-
-
+         {{--  </div> --}}<!--/row-->
+       {{--  </div> --}}<!--/span-->
 
         <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
           <div class="list-group">
@@ -43,15 +41,14 @@
             <h3>Closed Tasks</h3>
 
             @foreach ($archives as $stats)
-            <a href="admin/tasks/resolved?month={{ $stats['month'] }}&year={{ $stats['year'] }}" 
+            <a href="/tasks/resolved?month={{ $stats['month'] }}&year={{ $stats['year'] }}" 
 
             class="list-group-item">{{ $stats['month']. ' ' .$stats['year']. ' '. 'Total:'.' '.$stats['total'] }}</a>
             @endforeach
             
-           {{-- </div> --}}
+          </div>
         </div><!--/span-->
       </div><!--/row-->
-
 
 
 @endsection
