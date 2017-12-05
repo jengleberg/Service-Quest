@@ -16,6 +16,9 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 * Closed Task Archive
 * Form Validation
 
+### Full CRUD
+*
+
 ## Installation
 
 * $ git clone https://github.com/jengleberg/Service-Quest.git 
@@ -44,6 +47,9 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 
 4. Task list is where you can view all open tasks, add a note to a task or close a task.
 ![](https://i.imgur.com/taQTEmg.png)
+
+5. Add Task Note.  Notes are stored on this screen and indicate the name of the user who entered the note and the date. 
+![](https://i.imgur.com/ztRlygt.png)
 
 
 ## Workflow and Code Features
