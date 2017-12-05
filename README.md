@@ -2,7 +2,9 @@
 
 Service Quest is a Task Management app built with 
 
-* [Laravel version 5.5](https://laravel.com/)
+* Web Framework: [Laravel version 5.5](https://laravel.com/)
+* Dependency Manager: [Composer for PHP](https://getcomposer.org/)
+* Email Service: [SendGrid](https://sendgrid.com/)
 
 
 
@@ -19,6 +21,11 @@ Service Quest is a Task Management app built with
 * Task Resolution
 * Closed Task Archive
 * Form Validation
+
+### Next Version Planned Features
+
+* Refactor with Vue.js Front End Framework
+
 
 
 ## Installation
