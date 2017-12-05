@@ -34,9 +34,9 @@ Service Quest is a Task Management app built with Laravel 5.5.
 [Trello User Stories](https://trello.com/b/xNHjNO9r/project-4-guest-task-management-system-in-laravel)
 
 ### Web Routes
-!(https://imgur.com/a/7vv1w)
 
 
+ <blockquote class="imgur-embed-pub" lang="en" data-id="a/7vv1w"><a href="//imgur.com/7vv1w"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
 
