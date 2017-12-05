@@ -57,6 +57,7 @@ class Task extends Model
         return static::selectRaw('year(created_at) year, monthname(created_at) month, count(*) total')
         ->groupBy('year', 'month')
         ->orderByRaw('min(created_at) desc')
+        ->where('status', 'Closed')
         ->get()
         ->toArray();
     }
