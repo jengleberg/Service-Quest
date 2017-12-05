@@ -43,7 +43,7 @@
             <h3>Closed Tasks</h3>
 
             @foreach ($archives as $stats)
-            <a href="admin/tasks/resolved?month={{ $stats['month'] }}&year={{ $stats['year'] }}" 
+            <a href="/tasks/resolved?month={{ $stats['month'] }}&year={{ $stats['year'] }}" 
 
             class="list-group-item">{{ $stats['month']. ' ' .$stats['year']. ' '. 'Total:'.' '.$stats['total'] }}</a>
             @endforeach

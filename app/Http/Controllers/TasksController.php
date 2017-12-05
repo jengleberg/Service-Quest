@@ -8,6 +8,7 @@ use App\Task;
 use App\Location;
 use App\Mailers\AppMailer;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 
 
@@ -138,8 +139,8 @@ class TasksController extends Controller
     public function resolved()
     {
          $tasks = Task::
-         where('status', 'Closed')
-         ->filter(request()->only(['month', 'year']));
+         where('status', 'Closed');
+         // ->filter(request()->only(['month', 'year']));
 
         
         

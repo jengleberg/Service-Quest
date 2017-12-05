@@ -22,12 +22,15 @@ Service Quest is a Task Management app built with Laravel 5.5.
 * Dashboard Page with task archives
 * Authentication
  * registration, login, logout, password reset, admin users
+* Emails sent to user when task is created, updated and closed
 * Layouts with nested components
 * Task Creation
 * Task Notes with user history
-* Task List
+* Task List with pagination
 * Task Resolution
-* Emails sent to user when task is created, updated and closed
+* Closed Task Archive
+* Form Validation
+
 
 ## Workflow and Code Features
 
