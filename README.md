@@ -36,7 +36,14 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 1. Register as a user which will log you in and take you to the dashboard.
 ![](https://i.imgur.com/CnM7XNT.png)
 
-2. 
+2. From the Dashboard view open your open tasks, create a new task or view closed tasks based on month and year.
+![](https://i.imgur.com/RQbIUe8.png)
+
+3. Creating a new task, fill in the fields (all required using form validation).  A success message will appear after posting.
+![](https://i.imgur.com/oSbXcu6.png)
+
+4. Task list is where you can view all open tasks, add a note to a task or close a task.
+![](https://i.imgur.com/taQTEmg.png)
 
 
 ## Workflow and Code Features
