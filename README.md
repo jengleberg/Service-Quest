@@ -16,8 +16,6 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 * Closed Task Archive
 * Form Validation
 
-### Full CRUD
-*
 
 ## Installation
 
@@ -62,6 +60,10 @@ Service Quest is a Task Management app built with Laravel version 5.5.
 ### Web Routes
 
 ![](https://i.imgur.com/gNcz2wT.png)
+
+### TaskController Store Function for new task with save, email and success message.
+
+![](https://i.imgur.com/XTxDtMH.png)
 
 ### scopeFilter and archive public function on Task Model
 
