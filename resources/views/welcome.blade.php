@@ -13,6 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
+                
                 background-color: #fff;
                 background-image: 
                 color: #636b6f;
@@ -27,6 +28,7 @@
             }
 
             .flex-center {
+                background-image: url("./images/cherry-wood-texture.jpg");
                 align-items: center;
                 display: flex;
                 justify-content: center;
@@ -43,18 +45,20 @@
             }
 
             .content {
+
                 text-align: center;
             }
 
             .title {
                 font-size: 84px;
+                font-weight: bold;
             }
 
             .links > a {
-                color: #636b6f;
+                color: black;
                 padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
+                font-size: 20px;
+                font-weight: 900;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -82,6 +86,10 @@
                 <div class="title m-b-md">
                     Service Quest Task Manager
                 </div>
+                <div>
+                   <h3> Your Task Management Solution</h3>
+                </div>
+                
 
                 
             </div>
