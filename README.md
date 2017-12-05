@@ -35,8 +35,11 @@ Service Quest is a Task Management app built with Laravel 5.5.
 
 ### Web Routes
 
-
 ![](https://i.imgur.com/gNcz2wT.png)
+
+### scopeFilter and archive public function on Task Model
+
+![](https://i.imgur.com/rAoQ0LD.png)
 
 
 
